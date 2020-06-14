@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import { css } from 'emotion';
 import Store from '../store/store';
 import useAsyncList from '../hooks/fetchData';
+import Episodes from '../modules/list';
+
+const header = css`
+    background-color: #282c34;
+    color: white;
+    align-items: center;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+`;
 
 const App = () => {
     const { state, dispatch } = React.useContext(Store);
@@ -18,36 +31,16 @@ const App = () => {
         return null;
     }
     return (
-        <div className="App">
-            <header className="App-header">
+        <>
+            <header className={header}>
                 {!dataLoad && (
                     <p>
                         Edit <code>src/App.js</code> and save to reload.
                     </p>
                 )}
-                {dataLoad && (
-                    <section>
-                        {state.episodes.map((episode) => {
-                            return (
-                                <section key={episode.id}>
-                                    <img
-                                        src={episode.image.medium}
-                                        alt={`Rick and Morty ${episode.name}`}
-                                    />
-                                    <div>{episode.name}</div>
-                                    <section>
-                                        <div>
-                                            Season: {episode.season} Number:{' '}
-                                            {episode.number}
-                                        </div>
-                                    </section>
-                                </section>
-                            );
-                        })}
-                    </section>
-                )}
+                {dataLoad && <Episodes episodes={state.episodes} />}
             </header>
-        </div>
+        </>
     );
 };
 
