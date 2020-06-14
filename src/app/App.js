@@ -33,11 +33,6 @@ const App = () => {
     return (
         <>
             <header className={header}>
-                {!dataLoad && (
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                )}
                 {dataLoad && <Episodes episodes={state.episodes} />}
             </header>
         </>
