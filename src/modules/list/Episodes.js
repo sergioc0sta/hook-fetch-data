@@ -7,6 +7,8 @@ const episodeBox = css`
 `;
 
 const episodeLayout = css`
+    background-color: #282c34;
+    color: white;
     padding: 0.5rem;
     display: flex;
     flex-wrap: wrap;

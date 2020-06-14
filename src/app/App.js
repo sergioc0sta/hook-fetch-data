@@ -1,20 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { css } from 'emotion';
 import Store from '../store/store';
 import useAsyncList from '../hooks/fetchData';
 import Episodes from '../modules/list';
-
-const header = css`
-    background-color: #282c34;
-    color: white;
-    align-items: center;
-    border-bottom: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    position: sticky;
-    top: 0;
-`;
+import Header from '../modules/header';
 
 const App = () => {
     const { state, dispatch } = React.useContext(Store);
@@ -32,9 +20,8 @@ const App = () => {
     }
     return (
         <>
-            <header className={header}>
-                {dataLoad && <Episodes episodes={state.episodes} />}
-            </header>
+            <Header numberEpisodes={state.episodes.length} />
+            {dataLoad && <Episodes episodes={state.episodes} />}
         </>
     );
 };
