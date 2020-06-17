@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Store from './store';
-import Reducer from '../reducer/rickyAndMorty';
+import Reducer from '../reducer';
 import InitialState from './initialState';
 
 const Provider = ({ children }) => {

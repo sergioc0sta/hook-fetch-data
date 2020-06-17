@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { css } from 'emotion';
+import Store from '../list/store/store';
 
 const header = css`
     background-color: #282c34;
@@ -14,7 +14,10 @@ const header = css`
     top: 0;
 `;
 
-const Header = ({ numberEpisodes }) => {
+function Header() {
+    const { state } = useContext(Store);
+    const numberEpisodes = state?.episodes?.length || 0;
+
     return (
         <header className={header}>
             <div>
@@ -24,13 +27,6 @@ const Header = ({ numberEpisodes }) => {
             <div>All Episodes(s) {numberEpisodes}</div>
         </header>
     );
-};
-Header.defaultProps = {
-    numberEpisodes: 0,
-};
-
-Header.propTypes = {
-    numberEpisodes: PropTypes.number,
-};
+}
 
 export default Header;

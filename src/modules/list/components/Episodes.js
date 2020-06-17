@@ -7,7 +7,6 @@ const episodeBox = css`
 `;
 
 const episodeLayout = css`
-    background-color: #282c34;
     color: white;
     padding: 0.5rem;
     display: flex;
@@ -20,7 +19,7 @@ const episodeSeason = css`
     justifycontent: 'space-between';
 `;
 
-const Episodes = ({ episodes }) => {
+function Episodes({ episodes }) {
     return (
         <div className={episodeLayout}>
             {episodes.map((episode) => {
@@ -42,7 +41,7 @@ const Episodes = ({ episodes }) => {
             })}
         </div>
     );
-};
+}
 
 Episodes.defaultProps = {
     episodes: [],
