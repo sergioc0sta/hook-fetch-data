@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { css } from 'emotion';
-import Store from '../list/store/store';
+import { useStore } from '../list/store/store';
 
 const header = css`
     background-color: #282c34;
@@ -15,7 +15,7 @@ const header = css`
 `;
 
 function Header() {
-    const { state } = useContext(Store);
+    const { state } = useStore();
     const numberEpisodes = state?.episodes?.length || 0;
 
     return (

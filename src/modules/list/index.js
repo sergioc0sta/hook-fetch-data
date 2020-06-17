@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
-import Store from './store/store';
+import React, { useEffect, useState } from 'react';
+import { useStore } from './store/store';
 import useAsyncList from './hooks/fetchData';
 import Episodes from './components/Episodes';
 
 function Index() {
-    const { state, dispatch } = useContext(Store);
+    const { state, dispatch } = useStore();
     const [loading, error] = useAsyncList(dispatch);
     const [dataLoad, setDataLoad] = useState(false);
 

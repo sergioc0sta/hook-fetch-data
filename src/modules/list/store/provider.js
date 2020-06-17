@@ -6,8 +6,9 @@ import InitialState from './initialState';
 
 const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(Reducer, InitialState);
-    const value = { state, dispatch };
-    return <Store.Provider value={value}>{children}</Store.Provider>;
+    return (
+        <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
+    );
 };
 
 Provider.defaultProps = {
