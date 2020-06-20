@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
+import ImageContainer from '../imageContainer/ImageContainer';
+
 const episodeBox = css`
     padding: 0.5rem;
 `;
@@ -9,7 +11,7 @@ const episodeBox = css`
 const episodeLayout = css`
     color: white;
     padding: 0.5rem;
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     justify-content: center;
 `;
@@ -25,7 +27,7 @@ function Episodes({ episodes }) {
             {episodes.map((episode) => {
                 return (
                     <section key={episode.id} className={episodeBox}>
-                        <img
+                        <ImageContainer
                             src={episode.image.medium}
                             alt={`Rick and Morty ${episode.name}`}
                         />
@@ -62,3 +64,12 @@ Episodes.propTypes = {
 };
 
 export default Episodes;
+
+/*
+
+<img
+                            src={episode.image.medium}
+                            alt={`Rick and Morty ${episode.name}`}
+                        />
+
+*/

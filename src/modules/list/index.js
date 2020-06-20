@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useStore } from './store/store';
 import useAsyncList from './hooks/fetchData';
-import Episodes from './components/Episodes';
+import Episodes from './components/episodes/Episodes';
 
 function Index() {
     const { state, dispatch } = useStore();

@@ -6,7 +6,7 @@ const header = css`
     background-color: #282c34;
     color: white;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
