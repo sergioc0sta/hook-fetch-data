@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
-import useIntersectionObserver from '../../../intersection-observer/hooks/IntersectionObserver';
+import useIntersectionObserver from '../../../intersection-observer';
+// import Image from '../image/Image';
 
 const imageContainer = css`
     background: red;
@@ -12,16 +13,11 @@ const imageContainer = css`
 `;
 
 function ImageContainer({ src, alt }) {
-    const ref = useRef();
-    const [isVisible, setIsVisible] = React.useState(false);
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
     useIntersectionObserver({
         target: ref,
-        onIntersect: ([{ isIntersecting }], observerElement) => {
-            if (isIntersecting) {
-                setIsVisible(true);
-                observerElement.unobserve(ref.current);
-            }
-        },
+        setIsVisible,
     });
     return (
         <div ref={ref} className={imageContainer}>

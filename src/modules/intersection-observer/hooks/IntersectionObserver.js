@@ -1,20 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 function useIntersectionObserver({
     target,
-    onIntersect,
-    threshold = 0.1,
+    setIsVisible,
+    root,
+    threshold = 0,
     rootMargin = '0px',
 }) {
+    const observer = useRef(null);
+
+    const callback = (entries, observe) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observe.unobserve(target.current);
+            }
+        });
+    };
     useEffect(() => {
-        const observer = new IntersectionObserver(onIntersect, {
+        observer.current = new IntersectionObserver(callback, {
+            root,
             rootMargin,
             threshold,
         });
         const { current } = target;
-        observer.observe(current);
+        observer.current.observe(current);
         return () => {
-            observer.unobserve(current);
+            observer.current.unobserve(current);
         };
     });
 }
