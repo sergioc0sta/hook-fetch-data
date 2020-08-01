@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
@@ -14,11 +14,10 @@ const imageContainer = css`
 
 function ImageContainer({ src, alt }) {
     const ref = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-    useIntersectionObserver({
+    const isVisible = useIntersectionObserver({
         target: ref,
-        setIsVisible,
     });
+
     return (
         <div ref={ref} className={imageContainer}>
             {isVisible && <img className="image" src={src} alt={alt} />}

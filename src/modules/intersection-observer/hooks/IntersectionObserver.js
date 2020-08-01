@@ -1,12 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function useIntersectionObserver({
     target,
-    setIsVisible,
     root,
     threshold = 0,
     rootMargin = '0px',
 }) {
+    const [isVisible, setIsVisible] = useState(false);
     const observer = useRef(null);
 
     const callback = (entries, observe) => {
@@ -25,10 +25,12 @@ function useIntersectionObserver({
         });
         const { current } = target;
         observer.current.observe(current);
+
         return () => {
             observer.current.unobserve(current);
         };
-    });
+    }, [isVisible, setIsVisible]);
+    return isVisible;
 }
 
 export default useIntersectionObserver;
