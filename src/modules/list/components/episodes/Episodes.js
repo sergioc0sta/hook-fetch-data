@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
+import ImageContainer from '../imageContainer/ImageContainer';
+
 const episodeBox = css`
     padding: 0.5rem;
 `;
 
 const episodeLayout = css`
-    background-color: #282c34;
     color: white;
     padding: 0.5rem;
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     justify-content: center;
 `;
@@ -20,13 +21,13 @@ const episodeSeason = css`
     justifycontent: 'space-between';
 `;
 
-const Episodes = ({ episodes }) => {
+function Episodes({ episodes }) {
     return (
         <div className={episodeLayout}>
             {episodes.map((episode) => {
                 return (
                     <section key={episode.id} className={episodeBox}>
-                        <img
+                        <ImageContainer
                             src={episode.image.medium}
                             alt={`Rick and Morty ${episode.name}`}
                         />
@@ -42,7 +43,7 @@ const Episodes = ({ episodes }) => {
             })}
         </div>
     );
-};
+}
 
 Episodes.defaultProps = {
     episodes: [],
@@ -63,3 +64,12 @@ Episodes.propTypes = {
 };
 
 export default Episodes;
+
+/*
+
+<img
+                            src={episode.image.medium}
+                            alt={`Rick and Morty ${episode.name}`}
+                        />
+
+*/

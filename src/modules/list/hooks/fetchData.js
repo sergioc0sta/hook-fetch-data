@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import constants from '../constants/constants';
-import FetchEpisodes from '../services/fetchEpisodes';
+import constants from '../constants';
+import FetchEpisodes from '../service';
 
 function useAsyncList(dispatch = false) {
     const [loading, setLoading] = useState(false);

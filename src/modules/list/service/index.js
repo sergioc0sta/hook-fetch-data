@@ -1,4 +1,4 @@
-const FetchEpisodes = async (setLoading, setError, dispatch, URL) => {
+async function FetchEpisodes(setLoading, setError, dispatch, URL) {
     try {
         const data = await fetch(URL);
         const dataJSON = await data.json();
@@ -13,6 +13,6 @@ const FetchEpisodes = async (setLoading, setError, dispatch, URL) => {
         setError(true);
         return false;
     }
-};
+}
 
 export default FetchEpisodes;

@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from 'emotion';
+import { useStore } from '../list/store/store';
 
 const header = css`
     background-color: #282c34;
     color: white;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
@@ -14,7 +14,10 @@ const header = css`
     top: 0;
 `;
 
-const Header = ({ numberEpisodes }) => {
+function Header() {
+    const { state } = useStore();
+    const numberEpisodes = state?.episodes?.length || 0;
+
     return (
         <header className={header}>
             <div>
@@ -24,13 +27,6 @@ const Header = ({ numberEpisodes }) => {
             <div>All Episodes(s) {numberEpisodes}</div>
         </header>
     );
-};
-Header.defaultProps = {
-    numberEpisodes: 0,
-};
-
-Header.propTypes = {
-    numberEpisodes: PropTypes.number,
-};
+}
 
 export default Header;
