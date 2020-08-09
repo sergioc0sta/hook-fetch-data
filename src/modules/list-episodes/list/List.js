@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
-import ImageContainer from '../imageContainer/ImageContainer';
+import ImageContainer from '../image-container';
 
 const episodeBox = css`
     padding: 0.5rem;
@@ -21,7 +21,7 @@ const episodeSeason = css`
     justifycontent: 'space-between';
 `;
 
-function Episodes({ episodes }) {
+function List({ episodes }) {
     return (
         <div className={episodeLayout}>
             {episodes.map((episode) => {
@@ -45,11 +45,11 @@ function Episodes({ episodes }) {
     );
 }
 
-Episodes.defaultProps = {
+List.defaultProps = {
     episodes: [],
 };
 
-Episodes.propTypes = {
+List.propTypes = {
     episodes: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number,
@@ -63,7 +63,7 @@ Episodes.propTypes = {
     ),
 };
 
-export default Episodes;
+export default List;
 
 /*
 

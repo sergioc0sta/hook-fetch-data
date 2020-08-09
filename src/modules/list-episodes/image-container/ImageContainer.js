@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
-import useIntersectionObserver from '../../../intersection-observer';
-// import Image from '../image/Image';
+import useIntersectionObserver from '../../../hooks/intersection-observer';
 
 const imageContainer = css`
     background: red;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { useStore } from '../list/store/store';
+import { useStoreEpisodes } from '../../context/episodes/episodesContext';
 
 const header = css`
     background-color: #282c34;
@@ -15,8 +15,8 @@ const header = css`
 `;
 
 function Header() {
-    const { state } = useStore();
-    const numberEpisodes = state?.episodes?.length || 0;
+    const { episodes } = useStoreEpisodes();
+    const numberEpisodes = episodes?.length || 0;
 
     return (
         <header className={header}>

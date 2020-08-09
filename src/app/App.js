@@ -1,14 +1,14 @@
 import React from 'react';
-import Episodes from '../modules/list';
+import Episodes from '../modules/list-episodes';
 import Header from '../modules/header';
-import Provider from '../modules/list/store/provider';
+import EpisodesProvider from '../context/episodes/episodesProvider';
 
 const App = () => {
     return (
-        <Provider>
+        <EpisodesProvider>
             <Header />
             <Episodes />
-        </Provider>
+        </EpisodesProvider>
     );
 };
 

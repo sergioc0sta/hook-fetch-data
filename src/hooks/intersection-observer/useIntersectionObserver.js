@@ -4,7 +4,7 @@ function useIntersectionObserver({
     target,
     root,
     threshold = 0,
-    rootMargin = '0px',
+    rootMargin = '0px 0px 0px 0px',
 }) {
     const [isVisible, setIsVisible] = useState(false);
     const observer = useRef(null);
