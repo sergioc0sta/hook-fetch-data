@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from 'emotion';
-import { useStoreEpisodes } from '../../context/episodes/episodesContext';
+// import { useStoreEpisodes } from '../../context/episodes/episodesContext';
+import { useStoreFavorites } from '../../context/favorites/favoritesContext';
 
 const header = css`
     background-color: #282c34;
@@ -15,16 +16,17 @@ const header = css`
 `;
 
 function Header() {
-    const { episodes } = useStoreEpisodes();
-    const numberEpisodes = episodes?.length || 0;
-
+    const { favorite } = useStoreFavorites();
+    useEffect(() => {
+        console.log('novo', favorite);
+    }, [favorite]);
     return (
         <header className={header}>
             <div>
                 <h1>Rick and Morty</h1>
                 <p>Pick your favourite episodes</p>
             </div>
-            <div>All Episodes(s) {numberEpisodes}</div>
+            <div>All Episodes(s) {favorite}</div>
         </header>
     );
 }

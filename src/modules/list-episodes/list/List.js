@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
 import ImageContainer from '../image-container';
+import Button from '../../favorite-episodes';
+import { useStoreFavorites } from '../../../context/favorites/favoritesContext';
 
 const episodeBox = css`
     padding: 0.5rem;
@@ -17,11 +19,30 @@ const episodeLayout = css`
 `;
 
 const episodeSeason = css`
-    display: flex;
     justifycontent: 'space-between';
 `;
 
+const containerInfo = css`
+    display: flex;
+    flex-wrap: rwap;
+    justify-content: space-around;
+`;
+
+const button = css`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: grid;
+`;
+
+const infoEpisode = css`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`;
+
 function List({ episodes }) {
+    const { addEpisode, removeEpisode } = useStoreFavorites();
     return (
         <div className={episodeLayout}>
             {episodes.map((episode) => {
@@ -31,13 +52,26 @@ function List({ episodes }) {
                             src={episode.image.medium}
                             alt={`Rick and Morty ${episode.name}`}
                         />
-                        <div>{episode.name}</div>
-                        <section className={episodeSeason}>
-                            <div>
-                                Season: {episode.season} Number:{' '}
-                                {episode.number}
+                        <div className={containerInfo}>
+                            <div className={infoEpisode}>
+                                <div>{episode.name}</div>
+                                <div className={episodeSeason}>
+                                    Season: {episode.season} Number:{' '}
+                                    {episode.number}
+                                </div>
                             </div>
-                        </section>
+
+                            <div className={button}>
+                                <Button onClick={() => addEpisode()}>
+                                    {' '}
+                                    👍
+                                </Button>
+                                <Button onClick={() => removeEpisode()}>
+                                    {' '}
+                                    👎
+                                </Button>
+                            </div>
+                        </div>
                     </section>
                 );
             })}
