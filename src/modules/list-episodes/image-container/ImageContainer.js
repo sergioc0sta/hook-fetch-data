@@ -16,7 +16,6 @@ function ImageContainer({ src, alt }) {
     const isVisible = useIntersectionObserver({
         target: ref,
     });
-
     return (
         <div ref={ref} className={imageContainer}>
             {isVisible && <img className="image" src={src} alt={alt} />}

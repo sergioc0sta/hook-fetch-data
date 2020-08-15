@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-
 import ImageContainer from '../image-container';
 
 const episodeBox = css`
@@ -22,13 +21,14 @@ const episodeSeason = css`
 `;
 
 function List({ episodes }) {
+    if (episodes.lenght === 0) return null;
     return (
         <div className={episodeLayout}>
             {episodes.map((episode) => {
                 return (
                     <section key={episode.id} className={episodeBox}>
                         <ImageContainer
-                            src={episode.image.medium}
+                            src={episode?.image?.medium}
                             alt={`Rick and Morty ${episode.name}`}
                         />
                         <div>{episode.name}</div>

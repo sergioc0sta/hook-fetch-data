@@ -12,11 +12,7 @@ const EpisodesProvider = ({ children }) => {
     );
 };
 
-EpisodesProvider.defaultProps = {
-    children: null,
-};
-
 EpisodesProvider.propTypes = {
-    children: PropTypes.shape({}),
+    children: PropTypes.node.isRequired,
 };
 export default EpisodesProvider;
